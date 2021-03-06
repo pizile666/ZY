@@ -26,12 +26,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.ZM_zhimabody
+        
         run: |
-          cd ~/JS
+          cd ~/ZY
           npm install
       - name: '运行 【芝麻视频】'
-        if: env.ZM_zhimabody
+        
         run: |
           cd ~/ZY
           node Task/zhima.js
