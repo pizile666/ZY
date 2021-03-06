@@ -16,7 +16,7 @@ jobs:
     env:
         
         ZM_zhimabody: ${{ secrets.ZM_zhimabody }}
-        
+        ZM_zhimatxbody: ${{ secrets.ZM_zhimatxbody }}
     steps:
       - name: Checkout
         run: |
