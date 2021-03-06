@@ -1,0 +1,28 @@
+﻿name: 步步宝
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0,30 0-23 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest       
+    steps:
+      
+      - name: Checkout
+        run: |
+          git clone https://github.com/pizile/ZY.git ~/ZY
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: npm install
+        run: |
+          cd ~/...
+          npm install
+          npm install cron
+          npm install request
+          curl ipinfo.io/json
+      - name: '【步步宝】'
+        run: |
+          cd ~/ZY
+          node Task/bububao.js
