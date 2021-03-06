@@ -27,12 +27,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm instal
-        if: env.XP_refreshTOKEN
+      
         run: |
           cd ~/pizile
           npm install
       - name: '运行 【笑谱】'
-        if: env.XP_refreshTOKEN
+        
         run: |
           cd ~/ZY
           node Task/iboxpay.js
