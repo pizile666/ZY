@@ -6,7 +6,7 @@ name: 芝麻视频
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/15 0-15 * * *'
+     - cron: '*/15 * * * *'
   watch:
     types: started
 jobs:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/pizile/BBB.git ~/JS
+          git clone https://github.com/pizile/ZY.git ~/ZY
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -33,7 +33,7 @@ jobs:
       - name: '运行 【芝麻视频】'
         if: env.ZM_zhimabody
         run: |
-          cd ~/JS
+          cd ~/ZY
           node Task/zhima.js
         env:
           
