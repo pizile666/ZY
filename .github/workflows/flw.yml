@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/Joinmogul/ziye12_JavaScript.git ~/ziye12_JavaScript
+          git clone https://github.com/pizile/ZY.git ~/ZY
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -31,12 +31,12 @@ jobs:
       - name: npm install
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
+          cd ~/ZY
           npm install
       - name: '运行 【返利网】'
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
+          cd ~/ZY
           node Task/flw.js
         env:
           
