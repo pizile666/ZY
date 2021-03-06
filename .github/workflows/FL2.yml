@@ -10,7 +10,7 @@ on:
   watch:
     types: [started]
   repository_dispatch:
-    types: 返利网2
+    types: fl2
 jobs:
   build:
 
