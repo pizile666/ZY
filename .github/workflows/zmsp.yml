@@ -33,7 +33,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【芝麻视频】'
-        if: env.ZM_HD
+        if: env.zmhd
         run: |
           node Task/zmsp.js
         env:
