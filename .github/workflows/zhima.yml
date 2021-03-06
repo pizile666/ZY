@@ -17,7 +17,7 @@ jobs:
         
         zmurl: ${{ secrets.zmurl }}
         zmhd: ${{ secrets.zmhd }}
-        zmurl: ${{ secrets.zmbody }}
+        zmbody: ${{ secrets.zmbody }}
     steps:
       - name: Checkout
         run: |
