@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: r0ckrise/Self_Actions
+          repository: pizile/ZY
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -34,7 +34,7 @@ jobs:
           npm install
       - name: '运行 【燃旅视频】'
         run: |
-          node Scripts/ranlv.js
+          node Task/ranlv.js
         env:
           RLURL: ${{ secrets.RLURL }}
           RLHEADER: ${{ secrets.RLHEADER }}
