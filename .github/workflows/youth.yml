@@ -1,4 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+﻿# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: 中青看点
@@ -6,7 +6,7 @@ name: 中青看点
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/7 */5 * * *'
+     - cron: '0 0 1 1 *'
   watch:
     types: started
 
@@ -51,5 +51,3 @@ jobs:
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER}}
           TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST}}
           TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT}}
-
-    
