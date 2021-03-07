@@ -16,6 +16,7 @@ jobs:
           node-version: 14.x
       - name: npm install
         run: |
+          git clone https://github.com/pizile/ZY.git ~/ZY
           cd ~/ZY
           npm install
           npm install cron
