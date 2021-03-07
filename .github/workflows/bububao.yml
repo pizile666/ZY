@@ -5,7 +5,9 @@ on:
     - cron: '0,30 0-15,22,23 * * *'
 jobs:
   build:
-    runs-on: ubuntu-latest       
+    runs-on: ubuntu-latest    
+    env.
+      BBB_CASH: ${{ secrets.BBB_CASH }}   
     steps:
       
       - name: Checkout
