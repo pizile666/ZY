@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        zhimabodyVal: ${{ secrets.zhimabodyVal }}
-        	
-        
+        zhimabodyVal: ${{ secrets.zhimabodyVal }}  
     steps:
       - name: Checkout
         run: |
