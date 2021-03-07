@@ -1,4 +1,4 @@
-﻿name: 芝麻视频
+﻿name: 芝麻视频ziye
 
 on:
   workflow_dispatch:
