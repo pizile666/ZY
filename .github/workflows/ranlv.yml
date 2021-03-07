@@ -29,7 +29,7 @@ jobs:
       - name: '运行 【燃旅视频】'
         run: |
           cd ~/ZY
-          node Task/qmyd.js
+          node Task/ranlv.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
