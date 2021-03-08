@@ -92,7 +92,7 @@ async function all() {
                 drawgold = 0;
 
                 //阅读
-                await readbook();
+                //await readbook();
 
                 //收集阅读金币
                 //if(ReadTimes>0)
@@ -131,7 +131,7 @@ async function all() {
                 vediogold = 0;
                 drawgold = 0;
                 //阅读
-                await readbook();
+                //await readbook();
 
                 //收集阅读金币
                 //if(ReadTimes>0)
