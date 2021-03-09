@@ -1,56 +1,64 @@
-﻿/*
+Skip to content
+Search or jump to…
 
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@pizile 
+pizile
+/
+ZY
+1
+11
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+ZY/Task/sqxs.js /
+@pizile
+pizile Update sqxs.js
+Latest commit 5e9137d 22 hours ago
+ History
+ 1 contributor
+774 lines (714 sloc)  28.5 KB
+  
+/*
 脚本名称："书旗小说多账户号稳定版";
 适用版本：verson 4.3.2 ; 适用版本：verson 4.3.2 ; 适用版本：verson 4.3.2 ;（重要事情说三遍）
 作者：caixukun;
-
-
 【注意事项】：
 0.所有js脚本均为本地脚本，非远程目录。
-
 1.有时候会出现获取不到ck的情况，请关闭代理重复该步骤多试几次；
-
 2.看视频金币ck获取可能会出现视频加载失败，可以先关闭qx，待视频能看再打开qx;
-
 3.运行次数大概一天，一到两次，日收益5毛左右；
-
 4.阅读任务可能会出现中断，读者可自行更改间隔时间；
-
 5.所有ck获取完成，可以打开boxjs看看书否所有的参数都有值，不要出现账号1的ack和账号2的bck混合在一起；
-
-
 【nodejs教程】：
 打开boxjs，复制会话，新建文件，粘贴，改文件名为 sqxsck.json,与本脚本放同一目录下，用nodejs即可运行本脚本；
-
-
 【QX教程】：
 hostname：ocean.shuqireader.com
-
 [rewrite_local]
 https://ocean.shuqireader.com/api/ad/v1/api/prize/lottery url script-request-body sqxsgetck.js
 https://ocean.shuqireader.com/api/activity/activity/v1/lottery/draw url script-request-body sqxsgetck.js
 https://ocean.shuqireader.com/api/activity/xapi/gold/record url script-request-body sqxsgetck.js
 https://ocean.shuqireader.com/api/prizecenter/xapi/prize/manual/receive url script-request-body sqxsgetck.js
 https://ocean.shuqireader.com/api/ad/v1/api/prize/readpage/pendant/lottery url script-request-body sqxsgetck.js
-
 [task_local]
 0 12 * * * sqxs.js, tag=书旗小说, enabled=true
-
 boxjs：https://raw.githubusercontent.com/xiaokxiansheng/js/master/Task/cxk10.boxjs.json
-
 共6个ck，打开书旗小说
 1.点击 我的-去赚钱-去看书，随便阅读一本书，金币转一圈获得 阅读ck;
-
 2.点击 我的-去赚钱-一键收取，获得 收集金币ck;
-
 3.点击 我的-去赚钱-看视频赚2500金币，看一个视频广告获得 视频金币奖励ck;
-
 4.点击 我的-去赚钱-福利转转转-看视频抽奖，获得 视频抽奖奖励ck 和 抽奖ck;
-
 5 点击 我的-去赚钱-记录,获得 用户信息url;
-
-
-
  */
 
 const jobname = '书旗小说'
