@@ -82,7 +82,7 @@ async function all() {
     //nodejs运行
     if ($.isNode()) {
 
-        let sqxsck = require('./sqxsck.json');
+        let sqxsck1 = require('./sqxsck1.json');
         let CountNumber = sqxsck.settings[1].val;
         $.log(`============ 共 ${CountNumber} 个${jobname}账号=============`);
         for (let i = 0; i < CountNumber; i++) {
