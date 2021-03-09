@@ -1,4 +1,4 @@
-name: 燃旅
+name: 燃旅视频
 
 on:
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【燃旅】'
+      - name: '运行 【燃旅视频】'
         run: |
           node Task/ranlv.js
         env:
