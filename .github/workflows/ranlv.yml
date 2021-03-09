@@ -33,7 +33,7 @@ jobs:
           npm install
       - name: '运行 【燃旅】'
         run: |
-          node ranlv.js
+          node  Task/ranlv.js
         env:
           RLURL: ${{ secrets.RLURL }}
           RLHEADER: ${{ secrets.RLHEADER }}
