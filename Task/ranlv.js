@@ -9,7 +9,8 @@ boxjs：https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/ZhiYi-N.
 #看一个视频获取ck
 目前包含：
 看视频奖励、分享奖励
-点赞视频奖励、评论视频奖励（评论内容：真好哈）
+点赞视频奖励、评论视频奖励
+榜单投票、榜单抽奖、脱口秀投票
 [mitm]
 hostname = ranlv.lvfacn.com
 #圈x 
@@ -25,13 +26,12 @@ const $ = Env(zhiyi)
 const notify = $.isNode() ?require('./sendNotify') : '';
 let status, videoid,myid,supportvideoid,supportrank,show;
 status = (status = ($.getval("rlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-const rlurlArr = []
-const rlheaderArr = []
+const rlurlArr = [], rlheaderArr = [],rlbodyArr = []
 let rlurl = $.getdata('rlurl')
 let rlheader = $.getdata('rlheader')
-
+let rlbody = $.getdata('rlbody')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
-let cash = ($.getval('rlcash') || '10')//提现10
+let cash = ($.getval('rlcash') || '0')//默认不自动提现
 const invite=1;//新用户自动邀请，0关闭，1默认开启
 const logs =0;//0为关闭日志，1为开启
 var hour=''
@@ -70,32 +70,31 @@ if ($.isNode()) {
   } else {
    rlheader = process.env.RLHEADER.split()
   };
- Object.keys(rlurl).forEach((item) => {
-        if (rlurl[item]) {
-          rlurlArr.push(rlurl[item])
-        }
-    });
-    Object.keys(rlheader).forEach((item) => {
-        if (rlheader[item]) {
-          rlheaderArr.push(rlheader[item])
-        }
-    });
-
+  if (process.env.RLBODY && process.env.RLBODY.indexOf('#') > -1) {
+   rlbody = process.env.RLBODY.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.RLBODY && process.env.RLBODY.indexOf('\n') > -1) {
+   rlbody = process.env.RLBODY.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   rlbody = process.env.RLBODY.split()
+  };
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
     rlurlArr.push($.getdata('rlurl'))
     rlheaderArr.push($.getdata('rlheader'))
-    
+    rlbodyArr.push($.getdata('rlbody'))
     let rlcount = ($.getval('rlcount') || '1');
   for (let i = 2; i <= rlcount; i++) {
     rlurlArr.push($.getdata(`rlurl${i}`))
     rlheaderArr.push($.getdata(`rlheader${i}`))
-    
+    rlbodyArr.push($.getdata(`rlbody${i}`))
   }
 }
 !(async () => {
-if (!rlheaderArr[0] && !rlurlArr[0]) {
+if (!rlheaderArr[0] && !rlbodyArr[0] && !rlurlArr[0]) {
     $.msg($.name, '【提示】请先获取燃旅视频一cookie')
     return;
   }
@@ -106,7 +105,7 @@ if (!rlheaderArr[0] && !rlurlArr[0]) {
       note =''
       rlurl = rlurlArr[i];
       rlheader = rlheaderArr[i];
-    
+      rlbody = rlbodyArr[i];
       $.index = i + 1;
       console.log(`\n开始【燃旅视频${$.index}】`)
       await checkVersion()
@@ -116,7 +115,7 @@ if (!rlheaderArr[0] && !rlurlArr[0]) {
       await myVotes()
       await wiTask()
       await showmsg()
-	    
+      
   }
  }
 })()
@@ -211,9 +210,9 @@ let headers = rlheader.replace(/acw_tc=\w+/,'')
         myid = result.user.id
         console.log('🎈'+result.msg+' 邀请码：'+result.user.id+' 昵称：'+result.user.nickname+' 燃旅号：'+result.user.ranlvid +'\n')
         console.log('现有余额：'+result.user.balance + '提现额度：'+result.user.lines+'\n')
-	if(cash > 0 && Number(result.user.balance) >= cash && Number(result.user.lines) >= Number(result.user.balance)){
+        if(cash > 0 && Number(result.user.balance) >= cash && Number(result.user.lines) >= Number(result.user.balance)){
         await wallet()
-        }	
+        }
         message += '🎈'+result.msg+' 邀请码：'+result.user.id+' 昵称：'+result.user.nickname+' 燃旅号：'+result.user.ranlvid +'现有余额：'+result.user.balance + '提现额度：'+result.user.lines+'\n'
         }else{
         console.log('👀我也不知道\n')
@@ -249,14 +248,14 @@ let headers = rlheader.replace(/acw_tc=\w+/,'')
         console.log('幸运红包：'+luckyArr.to_num+'/'+luckyArr.num)
         let shareArr = result.data.task.find(item => item.id === 6)
         console.log('分享红包：'+shareArr.to_num+'/'+shareArr.num)
-	let rankArr = result.data.task.find(item => item.id === 11)
+        let rankArr = result.data.task.find(item => item.id === 11)
         console.log('榜单红包：'+rankArr.to_num+'/'+rankArr.num)
-        if(rankArr.to_num < rankArr.to_num){
+        if(rankArr.to_num != rankArr.num){
         show = 0;
         }
-        if(rankArr.to_num >= rankArr.to_num){
+        if(rankArr.to_num == rankArr.num){
         show = 1;
-        }	
+        }
         if(shareArr.to_num < shareArr.num){
         await share()
         await video_info()
@@ -515,7 +514,6 @@ let commentarr = ['%E7%9C%9F%E4%B8%8D%E9%94%99%E5%93%A6','%E7%9C%9F%E5%A5%BD%E5%
 let x = Math.random()
 let no = Math.round( x < 0.1? ((x+0.1)*9) : (x*9))
 newcomment = commentarr[no]
-
  return new Promise((resolve) => {
     let comment_url = {
    		url: `https://ranlv.lvfacn.com/api.php/Ranlv/addComments?content=${newcomment}&${url}`,
@@ -574,7 +572,7 @@ let new_access_token = access_token.replace(/access_token=/,'')
         message += '🎈投票查询'+result.msg+' 可投票数：'+result.data.votes+'\n'
         let lottery_num = result.data.rate
         if(result.data.votes > 0){
-	if(show == 0){
+        if(show == 0){
         await mySupport()
         }
         if(show == 1){
@@ -731,7 +729,6 @@ let new_access_token = access_token.replace(/access_token=/,'')
     })
    })
 }
-
 //getRank
 async function getRank(){
 let url = rlurl.replace(/&video_id=\d{5}/,``)
