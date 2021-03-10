@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-      URL: "https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js"
-      RUNFILE: "Task/QQread.js"      
+      #URL: "https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js"
+      #RUNFILE: "Task/QQread.js"      
       XYZDURL: ${{ secrets.XYZDURL }}
       XYZDHD: ${{ secrets.XYZDHD }}
       XYZDBODY: ${{ secrets.XYZDBODY }}
