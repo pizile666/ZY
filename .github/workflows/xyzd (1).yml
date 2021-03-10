@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/pizile/ZY.git ~/js
+          git clone https://github.com/pizile/ZY.git ~/ZY
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -26,13 +26,13 @@ jobs:
       - name: npm install
         if: env.XYZD_URL
         run: |
-          cd ~/js
+          cd ~/ZY
           git checkout main
           npm install
       - name: '运行 【幸运赚点1】'
         if: env.XYZD_URL
         run: |
-          cd ~/js
+          cd ~/ZY
           node Task/xyzd.js
         env:
           
