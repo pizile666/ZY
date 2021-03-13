@@ -3,9 +3,13 @@ github地址 https://github.com/6Svip120apk69
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
 boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ziye.boxjs.json
+
 转载请备注个名字，谢谢
+
 ⚠️步步宝
 点击 http://bububao.yichengw.cn/?id=529742 下载APP  谢谢支持
+
+
 2.21 制作
 2.23 完成
 2.23 修复ck问题
@@ -17,26 +21,42 @@ boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThx
 3.4 取消限速
 3.5 优化提现
 3.8 替换为循环获取ck
+3.13 0.3的快乐回来了
+
 ⚠️ 时间设置    0,30 0-23 * * *    每天 35次以上就行   
+
  
 一 视频助力手动也是不行的 
 二 默认0点睡23点醒，时间务必包括这两个点 
+
 (已内置随机udid，添加重写无视多设备检测，如非必要，勿频繁登录)
+
+
 ⚠️一共1个位置 1个ck  👉 2条 Secrets 
 多账号换行
+
 第一步 添加  hostname=bububao.duoshoutuan.com,
+
 第二步 ⚠️添加步步宝获取TOKEN重写  
+
 登录步步宝  获取token
 bububaotokenVal 👉BBB_bububaoTOKEN
+
+
 CASH  👉  BBB_CASH     可设置0 0.3 50 100 200 888  默认0关闭提现，设置888由上至下循环提现
+
+
 ⚠️主机名以及重写👇
 hostname=bububao.duoshoutuan.com,
+
 ############## 圈x
 #步步宝获取TOKEN
 https:\/\/bububao\.duoshoutuan\.com\/user\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/bububao.js
+
 ############## loon
 #步步宝获取TOKEN
 http-response https:\/\/bububao\.duoshoutuan\.com\/user\/* script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/bububao.js, requires-body=1,max-size=0, tag=步步宝获取TOKEN
+
 ############## surge
 #步步宝获取TOKEN
 步步宝获取TOKEN = type=http-response,pattern=https:\/\/bububao\.duoshoutuan\.com\/user\/*,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/bububao.js
@@ -289,16 +309,14 @@ async function all() {
         if (!COOKIE.bububaotokenVal) {
             bububaotokenVal = bububaotokenArr[i];
         }
-        header = {
-            'store': `appstore`,
+       header = {
             'tokenstr': `${bububaotokenVal}`,
-            'Connection': `keep-alive`,
-            'Accept-Encoding': `gzip, deflate, br`,
-            'version': `10`,
             'idfa': ``,
+            'ini': `21`,
+            'store': `0`,
             'Content-Type': `application/x-www-form-urlencoded`,
-            'User-Agent': `BBB/132 CFNetwork/1206 Darwin/20.1.0`,
-            'platform': `2`,
+            'platform': `1`,
+            'version': `18`,
             'imei': ``,
             'Cookie': ``,
             'Host': `bububao.duoshoutuan.com`,
