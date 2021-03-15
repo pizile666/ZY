@@ -35,7 +35,7 @@ jobs:
         run: |
           node Task/ranlv.js
         env:
-          RLCASH: ${{ secrets.RLCASH }}
+          
           RLURL: ${{ secrets.RLURL }}
           RLHEADER: ${{ secrets.RLHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
