@@ -1,4 +1,4 @@
-name: 步步宝
+name: 小乐
 on:
   workflow_dispatch:
   schedule:
