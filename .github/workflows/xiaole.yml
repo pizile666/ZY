@@ -1,35 +1,33 @@
-name: 小乐
-
-
+name: 步步宝
 on:
   workflow_dispatch:
   schedule:
-     - cron: '1 */6 * * *'
-  watch:
-    types: started
+    - cron: '0,30 0-15,22,23 * * *'
 jobs:
   build:
-    runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        XL_URL: ${{ secrets.XL_URL }}
-        XL_HEADER: ${{ secrets.XL_HEADER }}  
-        TZ: Asia/shanghai
+    runs-on: ubuntu-latest       
     steps:
+      
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Use Node.js 12.x
+        run: |
+          git clone https://github.com/pizile/ZY.git ~/ZY
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: npm install
         run: |
+          cd ~/ZY
           npm install
-      - name: '运行 【小乐】'
-        if: env.XL_HEADER
+          npm install cron
+          npm install request
+          curl ipinfo.io/json
+      - name: '运行【小乐】'
         run: |
-          node Task/xsmm.js
-        env:
+          cd ~/ZY
+          node Task/xiaole.js
+env:
+          BBB_CASH: ${{ secrets.BBB_CASH }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
