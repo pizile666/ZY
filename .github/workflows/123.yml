@@ -22,16 +22,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Cache node_modules
-        uses: actions/cache@v2 # Ê¹ÓÃ GitHub ¹Ù·½»º´æ Action¡£
+        uses: actions/cache@v2 # ä½¿ç”¨ GitHub å®˜æ–¹ç¼“å­˜ Actionã€‚
         env:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ secrets.KEY }} # Ê¹ÓÃ package-lock.json µÄ Hash ×÷Îª»º´æµÄ key¡£Ò²¿ÉÒÔÊ¹ÓÃ package.json ´úÌæ
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ secrets.KEY }} # ä½¿ç”¨ package-lock.json çš„ Hash ä½œä¸ºç¼“å­˜çš„ keyã€‚ä¹Ÿå¯ä»¥ä½¿ç”¨ package.json ä»£æ›¿
       - name: npm install
         run: |
           npm install
-      - name: 'ÔËĞĞ ¡¾123¡¿'
+      - name: 'è¿è¡Œ ã€123ã€‘'
         run: |
           node Task/hldsp.js
         env:
