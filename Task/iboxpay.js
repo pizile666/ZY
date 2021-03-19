@@ -43,7 +43,8 @@ boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThx
 3.8 替换为循环获取ck
 3.9 因视频功能无效，故取消视频，默认开启直播
 3.17 修复视频功能， 暂时设置ck上限为10
-3.18 修复视频错误，修复小错误
+3.18 修复视频错误，修复小错误，新增COOKIE方式一 boxjs复制会话
+3.19 修复ac运行报错
 ⚠️一共1个位置 3个ck  👉 7条 Secrets 
 多账号换行
 ⚠️方法一
@@ -85,7 +86,7 @@ http-requires https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\
 #笑谱获取视频ck
 笑谱获取视频ck = type=http-requires,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
 */
-GXRZ = '3.18 修复视频错误，修复小错误'
+GXRZ = '3.19 修复ac运行报错'
 const $ = Env("笑谱");
 $.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
@@ -94,27 +95,38 @@ const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
 const CS = 5
-$.message = '', COOKIES_SPLIT = '', CASH = '', LIVE = '', phone = '', sms = '', ddtime = '', spid = '', TOKEN = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', zbid = '', cashcs = '', newcashcs = '', liveId = '';
+$.message = '', COOKIES_SPLIT = '', CASH = '', Length = 0, LIVE = '', phone = '', sms = '', ddtime = '', spid = '', TOKEN = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', zbid = '', cashcs = '', newcashcs = '', liveId = '';
 let livecs = 0,
     videoscs = 0,
     LIVES = 0,
     HBY = 0,
     liveIdcd = 0;
 RT = 30000;
-const refreshtokenArr = [];
+let refreshtokenArr = [];
 let refreshtokenVal = ``;
 let middlerefreshTOKEN = [];
-const iboxpayvideoheaderArr = [];
+let iboxpayvideoheaderArr = [];
 let iboxpayvideoheaderVal = ``;
 let middleiboxpayvideoHEADER = [];
-const iboxpayvideobodyArr = [];
+let iboxpayvideobodyArr = [];
 let iboxpayvideobodyVal = ``;
 let middleiboxpayvideoBODY = [];
+if ($.isNode() && COOKIE.datas && COOKIE.datas[0].val != '') {
+    console.log(
+        `============ cookie方式为：方式一 boxjs复制会话 =============\n`
+    );
+}
+if ($.isNode() && COOKIE.refreshtokenVal && COOKIE.refreshtokenVal != '') {
+    console.log(
+        `============ cookie方式为：方式三 直接填写 =============\n`
+    );
+}
+
 if ($.isNode()) {
     // 没有设置 XP_CASH 则默认为 0 不提现
     CASH = process.env.XP_CASH || 0;
     // 没有设置 XP_live 则默认0
-    LIVE = process.env.XP_live || 0;
+    LIVE = process.env.XP_live || 1;
     // 没有设置 XP_phone 则默认为 0 
     phone = process.env.XP_phone || 0;
     // 没有设置 XP_sms 则默认0  不获取TOKEN
@@ -136,6 +148,7 @@ if ($.isNode() && process.env.XP_refreshTOKEN) {
     } else {
         middlerefreshTOKEN = process.env.XP_refreshTOKEN.split();
     }
+    if (process.env.XP_iboxpayvideoHEADER) {
     if (
         process.env.XP_iboxpayvideoHEADER &&
         process.env.XP_iboxpayvideoHEADER.indexOf(COOKIES_SPLIT) > -1
@@ -152,6 +165,7 @@ if ($.isNode() && process.env.XP_refreshTOKEN) {
     } else {
         middleiboxpayvideoBODY = process.env.XP_iboxpayvideoBODY.split();
     }
+ }
 }
 if (COOKIE.refreshtokenVal) {
     XP_COOKIES = {
@@ -162,7 +176,23 @@ if (COOKIE.refreshtokenVal) {
     }
     Length = XP_COOKIES.refreshtokenVal.length;
 }
-if (!COOKIE.refreshtokenVal) {
+if (COOKIE.datas && COOKIE.datas[0].val != '') {
+
+    iboxpayCount = COOKIE.settings.find(item => item.id === `iboxpayCount`);
+    iboxpayLIVE = COOKIE.settings.find(item => item.id === `iboxpayLIVE`);
+    iboxpayCASH = COOKIE.settings.find(item => item.id === `iboxpayCASH`);
+    iboxpayphone = COOKIE.settings.find(item => item.id === `iboxpayphone`);
+    iboxpaysms = COOKIE.settings.find(item => item.id === `iboxpaysms`);
+
+    Length = iboxpayCount.val
+    LIVE = iboxpayLIVE.val
+    CASH = iboxpayCASH.val
+    phone = iboxpayphone.val
+    sms = iboxpaysms.val
+
+}
+
+if (!COOKIE.datas&&!COOKIE.refreshtokenVal) {
     if ($.isNode()) {
         Object.keys(middlerefreshTOKEN).forEach((item) => {
             if (middlerefreshTOKEN[item]) {
@@ -465,6 +495,24 @@ async function all() {
         return;
     }
     for (let i = 0; i < Length; i++) {
+        if (COOKIE.datas && COOKIE.datas[0].val != '') {
+
+
+            if (i == 0) {
+                op = ``
+            } else {
+                op = i + 1
+            }
+
+            refreshtokens = COOKIE.datas.find(item => item.key === `refreshtoken${op}`);
+            iboxpayvideoheader = COOKIE.datas.find(item => item.key === `iboxpayvideoheader${op}`);
+            iboxpayvideobody = COOKIE.datas.find(item => item.key === `iboxpayvideobody${op}`);
+
+            refreshtokenVal = refreshtokens.val;
+            iboxpayvideoheaderVal = iboxpayvideoheader.val;
+            iboxpayvideobodyVal = iboxpayvideobody.val;
+
+        }
 
         if (COOKIE.refreshtokenVal) {
 
@@ -472,7 +520,7 @@ async function all() {
             iboxpayvideoheaderVal = XP_COOKIES.iboxpayvideoheaderVal[i];
             iboxpayvideobodyVal = XP_COOKIES.iboxpayvideobodyVal[i];
         }
-        if (!COOKIE.refreshtokenVal) {
+        if (!COOKIE.datas&&!COOKIE.refreshtokenVal) {
 
             refreshtokenVal = refreshtokenArr[i];
             iboxpayvideoheaderVal = iboxpayvideoheaderArr[i];
@@ -535,7 +583,7 @@ async function all() {
             }
         }
 
-        if (iboxpayvideoheaderVal && iboxpayvideobodyVal && iboxpayvideoheaderVal != '' && iboxpayvideobodyVal != '' && LIVE != 2 && $.splimit.data.isUperLimit == false || LIVE == 888) {
+        if (iboxpayvideoheaderVal && iboxpayvideobodyVal && iboxpayvideoheaderVal != '' && iboxpayvideobodyVal != '' && LIVE != 2 && ($.splimit.data.isUperLimit == false || LIVE == 888)) {
 
             videoHEADER = iboxpayvideoheaderVal.split('&');
             videoBODY = iboxpayvideobodyVal.split('&');
@@ -553,7 +601,7 @@ async function all() {
 
             }
 
-        } else if (!iboxpayvideoheaderVal && !iboxpayvideobodyVal && iboxpayvideoheaderVal == '' && iboxpayvideobodyVal == '') {
+        } else if (!iboxpayvideoheaderVal || !iboxpayvideobodyVal || iboxpayvideoheaderVal == '' || iboxpayvideobodyVal == '') {
             console.log('视频奖励：未获取视频ck\n');
             $.message += '【视频奖励】：未获取视频ck\n'
         } else if (LIVE == 2) {
