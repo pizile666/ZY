@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        ximeiurl: ${{ secrets.ximeiurl }}
-        ximeihd: ${{ secrets.ximeihd }}      
+        XM_URL: ${{ secrets.XM_URL }}
+        XM_HD: ${{ secrets.XM_HD }}      
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -27,7 +27,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【西梅】'
-        if: env.ximeihd
+        if: env.XM_HD
         run: |
           node Task/ximei.js
         env:
