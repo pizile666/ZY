@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
     run: |
-          git clone https://github.com/pizile/ZY.git ~/ZY
+        git clone https://github.com/pizile/ZY.git ~/ZY
         
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -31,6 +31,7 @@ jobs:
       - name: '运行 【微客众志】'
         if: env.WKZZ_HD
         run: |
+          cd ~/ZY
           node Task/wkzz.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
