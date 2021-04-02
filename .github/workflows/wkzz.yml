@@ -1,38 +1,33 @@
-﻿name: 微客
+name: 书旗小说
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 1-14,17,21 * * *'
+     - cron: '7 * * * *'
   watch:
     types: started
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        WKZZ_HD: ${{ secrets.WKZZ_HD }}    
-        TZ: Asia/shanghai
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-    run: |
-        git clone https://github.com/pizile/ZY.git ~/ZY
-        
+        run: |
+          git clone https://github.com/bigchalizi/js.git ~/js
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/ZY
-          git checkout age174
+          cd ~/js
+          git checkout ZIYE
           npm install
-      - name: '运行 【微客众志】'
-        if: env.WKZZ_HD
+      - name: '运行 【书旗小说】'
         run: |
-          cd ~/ZY
-          node Task/wkzz.js
+          cd ~/js
+          node Task/shuqi.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
