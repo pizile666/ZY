@@ -1,10 +1,9 @@
-﻿name: 西梅
-
+name: 西梅
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '25 9 * * *'
+     - cron: '0 1 * * *'
   watch:
     types: started
 jobs:
@@ -12,22 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        XM_URL: ${{ secrets.XM_URL }}
-        XM_HD: ${{ secrets.XM_HD }}      
-        TZ: Asia/shanghai
+        XIMEI_HD: ${{ secrets.XIMEI_HD }}
+        XIMEI_URL: ${{ secrets.XIMEI_URL }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-        
-      - name: Use Node.js 12.x
+      - uses: actions/checkout@v1
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: npm install
         run: |
           npm install
       - name: '运行 【西梅】'
-        if: env.XM_HD
+        if: env.XIMEI_HD
         run: |
           node Task/ximei.js
         env:
