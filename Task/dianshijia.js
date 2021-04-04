@@ -1,40 +1,7 @@
-
 /*
-更新时间: 2021-03-01 10:30
+更新时间: 2021-03-19 19:20
 赞赏:电视家邀请码`893988`,农妇山泉 -> 有点咸，万分感谢
 本脚本仅适用于电视家签到，支持Actions多账号运行，请用'#'或者换行隔开‼️
-*/
-/*
-更新时间: 2020-11-16 09:40
-赞赏:电视家邀请码`893988`,农妇山泉 -> 有点咸，万分感谢
-本脚本仅适用于电视家签到，支持Actions多账号运行，请用'#'或者换行隔开‼️
-获取Cookie方法:
-1.将下方[rewrite_local]和[Task]地址复制的相应的区域，无需添加 hostname，每日7点、12点、20点各运行一次，其他随意
-2.APP登陆账号后，点击菜单栏'领现金',即可获取Cookie，进入提现页面，点击随机金额，可获取提现地址!!
-3.非专业人士制作，欢迎各位大佬提出宝贵意见和指导
-By Facsuny
-感谢 chavyleung 等
-~~~~~~~~~~~~~~~~~~~~
-loon 2.10+ :
-[Script]
-cron "04 00 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js, tag=电视家
-http-request http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js, timeout=10, tag=电视家
-http-request http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js, timeout=10, tag=电视家
-~~~~~~~~~~~~~~~~~~~~~
-# 获取电视家 Cookie.
-Surge 4.0
-[Script]
-电视家 = type=cron,cronexp=0 8 0 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js,script-update-interval=0
-电视家 = type=http-request,pattern=http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-电视家 = type=http-request,pattern=http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-~~~~~~~~~~~~~~~~~~
-QX 1.0.6+ :
-[task_local]
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-[rewrite_local]
-http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-~~~~~~~~~~~~~~~~~
 */
 const walkstep = '20000'; //每日步数设置，可设置0-20000
 const gametimes = "1999"; //游戏时长
@@ -44,7 +11,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let sleeping = "",
     detail = ``,
     subTitle = ``;
-let RewardId = $.getdata('REWARD') || '50'; //额外签到奖励，默认50为兑换0.2元额度，52为兑换1天VIP，46为兑换1888金币
+let RewardId = $.getdata('REWARD') || '55'; //额外签到奖励，默认55为兑换0.2元额度，44为兑换1天VIP，42为兑换1888金币
 const dianshijia_API = 'http://api.gaoqingdianshi.com/api'
 let tokenArr = [],
     DsjurlArr = [],
@@ -94,11 +61,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
         return;
     }
     timeZone = new Date().getTimezoneOffset() / 60;  //时区
-    console.log(`\n 时区： ${timeZone}\n`);
     timestamp = Date.now() + (8 + timeZone) * 60 * 60*1000;  //时间戳
-    timestamp2 =  new Date(new Date(timestamp).toLocaleDateString()).getTime() - (8 + timeZone) * 60 * 60*1000;   //北京时间当天0点时间戳
-    console.log(`\n 时间戳： ${timestamp}\n`);
-    console.log(`\n 时间戳2： ${timestamp2}\n`);
     bjTime = new Date(timestamp).toLocaleString('zh', {hour12: false,timeZoneName: 'long'}); //标准北京时间
     console.log(`\n === 脚本执行 ${bjTime} ===\n`);
     console.log(`------------- 共${tokenArr.length}个账号`);
@@ -160,7 +123,6 @@ function signin() {
             headers: JSON.parse(signheaderVal)
         }, async(error, response, data) => {
             if (logs) $.log(`${$.name}, 签到结果: ${data}\n`)
-            $.log(`${$.name}, 签到结果: ${data}\n`)
             let result = JSON.parse(data)
             if (result.errCode == 0) {
                 signinres = `签到成功 `
@@ -192,7 +154,6 @@ function signinfo() {
             headers: JSON.parse(signheaderVal)
         }, (error, response, data) => {
             if (logs) $.log(`${$.name}, 签到信息: ${data}\n`)
-            $.log(`${$.name}, 签到信息: ${data}\n`)
             let result = JSON.parse(data)
             if (result.errCode == 0) {
                 var d = `${result.data.currentDay}`
@@ -261,10 +222,10 @@ function cashlist() {
             let result = JSON.parse(data)
             let totalcash = Number(),
                 cashres = "";
-            console.log(`提现列表: ${data}`)
+            //console.log(`提现列表: ${data}`)
             if (result.errCode == 0) {
                 for (s = 0; s < result.data.length; s++) {
-                    if (result.data[s].type == '2' && result.data[s].ctime >= parseInt(timestamp2/1000)) {
+                    if (result.data[s].type == '2' && result.data[s].ctime >= parseInt(timestamp/1000)) {
                         cashres = `✅ 今日提现:` + result.data[s].amount / 100 + `元 `
                     }
                 }
@@ -489,7 +450,6 @@ function Withdrawal() {
             headers: JSON.parse(signheaderVal)
         }, (error, response, data) => {
             if (logs) $.log(`金币随机兑换 : ${data}\n`)
-            $.log(`金币随机兑换 : ${data}\n`)
             let todrawal = JSON.parse(data);
             if (todrawal.errCode == 0) {
                 detail += `【金额提现】✅ 到账` + todrawal.data.price / 100 + `元 🌷\n`
@@ -521,7 +481,6 @@ function Addsign() {
         }
         $.get(url, (error, response, data) => {
             if (logs) $.log(`额外签到: ${data}\n`)
-            $.log(`额外签到: ${data}\n`)
         })
         resolve()
     })
