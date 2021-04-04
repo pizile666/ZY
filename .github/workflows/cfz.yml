@@ -4,7 +4,7 @@ name: 春风赚
 on:
   workflow_dispatch:
   schedule:
-     - cron: '12,42 * * * *'
+     - cron: '12 * * * *'
   watch:
     types: started
 jobs:
