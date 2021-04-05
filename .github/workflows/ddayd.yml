@@ -29,5 +29,6 @@ jobs:
           cd ~/ZY
           node Task/ddayd.js
         env:
+          DDAYD_ddaydCK: ${{ secrets.DDAYD_ddaydCK }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
