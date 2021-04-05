@@ -21,14 +21,13 @@ jobs:
           node-version: 14.x
       - name: npm install
         run: |
-          cd ~/ZY
-          git checkout age174
-          npm install
+      
+             npm install
       - name: '运行 【西梅】'
         if: env.XIMEI_HD
         run: |
-          cd ~/ZY
-          node ximei.js
+   
+          node Task/ximei.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
