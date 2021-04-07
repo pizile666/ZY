@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/pizile/ZY.git ~/ZY
+          git clone https://github.com/pizile666/ZY.git ~/ZY
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
