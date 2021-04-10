@@ -38,6 +38,12 @@ jobs:
       - name: '运行 【走路赚】'
         run: |
           node Task/runstep.js
+      - name: '运行 【燃旅视频】'
+        run: |
+          node Task/ranlv.js
+      - name: '运行【小乐】'
+        run: |
+          node Task/xiaole.js
         env:
           RUNSTEP_TOKEN: ${{ secrets.RUNSTEP_TOKEN }}
           RUNSTEP_KEY: ${{ secrets.RUNSTEP_KEY }}
