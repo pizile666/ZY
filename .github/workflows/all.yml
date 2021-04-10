@@ -34,7 +34,6 @@ jobs:
       
       - name: '运行 【芝麻视频】'
         run: |
-          cd ~/ZY
           node Task/zhima.js
       - name: '运行 【走路赚】'
         run: |
