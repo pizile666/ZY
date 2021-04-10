@@ -34,13 +34,18 @@ jobs:
       - name: '运行 【芝麻视频】'
         run: |
           node Task/zhima.js
-     
-
+      - name: '运行 【走路赚】'
+        run: |
+          node Task/runstep.js    
+      - name: '运行 【QQ阅读】'
+        run: |
+          node Task/QQread.js
       - name: '运行 【电视家】'
         if: env.DSJ_HEADERS
         run: |
           node Task/dianshijia.js
         env:
+          QQreadurlVal: ${{ secrets.QQ_QQreadURL }}	
           DSJ_NOTIFY_CONTROL: ${{ secrets.DSJ_NOTIFY_CONTROL }}
           DSJ_HEADERS: ${{ secrets.DSJ_HEADERS }}
           DSJ_DRAWAL: ${{ secrets.DSJ_DRAWAL }}
