@@ -1,10 +1,10 @@
-name: 书旗小说 
+name: 书旗小说
 on:
   workflow_dispatch:
   watch:
     types: started
   schedule:
-    - cron: '0 20,0 * * *'
+    - cron: '0 1,7 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest       
