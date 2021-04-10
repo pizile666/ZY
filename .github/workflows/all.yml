@@ -31,9 +31,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【燃旅视频】'
-        run: |
-          node Task/ranlv.js
+      
       - name: '运行 【芝麻视频】'
         run: |
           cd ~/ZY
@@ -42,7 +40,9 @@ jobs:
         run: |
           node Task/runstep.js
         env:
-          
+          RUNSTEP_TOKEN: ${{ secrets.RUNSTEP_TOKEN }}
+          RUNSTEP_KEY: ${{ secrets.RUNSTEP_KEY }}
+          zhimabodyVal: ${{ secrets.zhimabodyVal }} 
           RLURL: ${{ secrets.RLURL }}
           RLHEADER: ${{ secrets.RLHEADER }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
