@@ -31,12 +31,13 @@ jobs:
       - name: npm install
         run: |
           npm install
+      - name: '运行 【走路赚】'
+        run: |
+          node Task/runstep.js           
       - name: '运行 【芝麻视频】'
         run: |
           node Task/zhima.js
-      - name: '运行 【走路赚】'
-        run: |
-          node Task/runstep.js    
+   
       - name: '运行 【QQ阅读】'
         run: |
           node Task/QQread.js
