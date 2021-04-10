@@ -32,12 +32,7 @@ jobs:
         run: |
           npm install
       
-      - name: '运行 【芝麻视频】'
-        run: |
-          node Task/zhima.js
-      - name: '运行 【走路赚】'
-        run: |
-          node Task/runstep.js
+
       - name: '运行 【燃旅视频】'
         run: |
           node Task/ranlv.js
