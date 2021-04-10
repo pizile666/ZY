@@ -265,7 +265,7 @@ await $.wait(1000);
   })
 }
 //西梅任务视频
-function ximeisp(timeout = 0) {
+//function ximeisp(timeout = 0) {
   return new Promise((resolve) => {
 tid = md5(`action_time=${times}&action_type=102&business_id=${id}&secret=${st}`)
 let url = {
@@ -298,7 +298,7 @@ await $.wait(1000);
   })
 }
 //西梅任务分享
-function ximeifx(timeout = 0) {
+//function ximeifx(timeout = 0) {
   return new Promise((resolve) => {
 tid = md5(`action_time=${times}&action_type=103&business_id=${id}&secret=${st}`)
 let url = {
