@@ -34,13 +34,12 @@ jobs:
       - name: '运行 【芝麻视频】'
         run: |
           node Task/zhima.js
-      - name: '运行 【走路赚】'
-        run: |
-          node Task/runstep.js      
+     
 
-      - name: '运行【小乐】'
+      - name: '运行 【电视家】'
+        if: env.DSJ_HEADERS
         run: |
-          node Task/xiaole.js
+          node Task/dianshijia.js
         env:
           RUNSTEP_TOKEN: ${{ secrets.RUNSTEP_TOKEN }}
           RUNSTEP_KEY: ${{ secrets.RUNSTEP_KEY }}
