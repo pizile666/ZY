@@ -3,7 +3,7 @@
 on:
   workflow_dispatch:
   schedule:
-    - cron: '12,32 * * * *'
+    - cron: '*/30 * * * *'
   watch:
     types: started
   repository_dispatch:
