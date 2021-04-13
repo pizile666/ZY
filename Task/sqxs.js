@@ -102,7 +102,7 @@ async function all() {
                 await vediogoldprize(0);
 
                 //看视频奖励抽奖次数
-                await vediodrawprize(0);
+                //await vediodrawprize(0);
 
                 //个人信息
                 await userinfo();
