@@ -1,5 +1,5 @@
 ﻿# File: .github/workflows/repo-sync.yml
-name: sync-ahe174-scripts
+name: sync-age174-scripts
 on:
   schedule:
     - cron: '1 */6 * * *'
