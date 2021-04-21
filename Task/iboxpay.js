@@ -1,12 +1,14 @@
 /* ziye 
-github地址 https://github.com/6Svip120apk69
+github地址 https://github.com/ziye888
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ziye.boxjs.json
+boxjs链接  https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/ziye.boxjs.json
 转载请备注个名字，谢谢
+
 ⚠️笑谱
 脚本运行一次   
 则运行6次视频 1次金蛋 1次直播（直播默认关闭，且在8点到23点有效）
+
 1.15 调整金蛋延迟为60秒
 1.17 增加ck失效提醒，以及金币满额停止
 1.27 笑谱恢复，活动id284
@@ -45,48 +47,88 @@ boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThx
 3.17 修复视频功能， 暂时设置ck上限为10
 3.18 修复视频错误，修复小错误，新增COOKIE方式一 boxjs复制会话
 3.19 修复ac运行报错
+3.20 视频ck有效期目前未知，增加失效判定，直播上限为5000，已适配
+4.15 视频ck有效期预计15天，直播上限为3000，已适配
+
+
 ⚠️一共1个位置 3个ck  👉 7条 Secrets 
 多账号换行
-⚠️方法一
-第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码
+
+
+⚠️方法一（永不掉ck）
+
+第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码（⚠️不要登录，如果想登录，请重新获取验证码或者用微信登录）
+
 第二步 ⚠️进入boxjs（其他平台则输入对应环境变量）  输入当前账号序号   输入手机号  和  验证码
+
 第三步 运行js  手机则自动获取token（其他平台则复制token，填写环境变量）  然后回到boxjs 修改验证码为0
+
+
 已全部操作完成
+
+
 ⚠️方法二
+
 第一步 添加  hostname=veishop.iboxpay.com,
+
 第二步 ⚠️添加笑谱获取更新TOKEN重写  
+
 登录笑谱(在登录状态就退出，重新登录)  获取更新TOKEN
+
+
+
 refreshtokenVal 👉XP_refreshTOKEN
 iboxpayvideoheaderVal👉 XP_iboxpayvideoHEADER
 iboxpayvideobodyVal👉 XP_iboxpayvideoBODY
+
+
 ⚠️视频ck
 添加视频ck重写  圈满获取header和body，若遇到网络问题，请切换到4G
+
+
+
 设置任务 可设置 0 1 2    0开视频关直播 1开视频开直播 2关视频开直播
  LIVE  👉  XP_live
+
 设置提现金额 可设置 0 1 15 30 50 100 888 默认0关闭  设置888由上至下循环提现
 CASH  👉  XP_CASH 
+
 设置手机号 
  phone  👉  XP_phone
+
 设置验证码   默认0关闭获取token功能
 sms  👉  XP_sms
+
 ⚠️主机名以及重写👇
+
 （手机可以获取refreshTOKEN     其他开启抓包，然后登录笑谱，找到 https://veishop.iboxpay.com/nf_gateway/nf-user-auth-web/ignore_tk/veishop/v1/ 里的响应体 refreshTOKEN）
+
 hostname=veishop.iboxpay.com
+
 ############## 圈x
+
 #笑谱获取更新TOKEN
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
+
 #笑谱获取视频ck
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json url script-request-body https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
+
 ############## loon
-http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
-http-requires https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑谱获取视频ck
+http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
+
+http-requires https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑谱获取视频ck
 ############## surge
+
 #笑谱获取更新TOKEN
-笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
+
 #笑谱获取视频ck
-笑谱获取视频ck = type=http-requires,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+笑谱获取视频ck = type=http-requires,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json,requires-body=1,max-size=0,script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
+
+
+
 */
-GXRZ = '3.19 修复ac运行报错'
+GXRZ = '4.15 视频ck有效期预计15天，直播上限为3000，已适配'
 const $ = Env("笑谱");
 $.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
@@ -149,23 +191,23 @@ if ($.isNode() && process.env.XP_refreshTOKEN) {
         middlerefreshTOKEN = process.env.XP_refreshTOKEN.split();
     }
     if (process.env.XP_iboxpayvideoHEADER) {
-    if (
-        process.env.XP_iboxpayvideoHEADER &&
-        process.env.XP_iboxpayvideoHEADER.indexOf(COOKIES_SPLIT) > -1
-    ) {
-        middleiboxpayvideoHEADER = process.env.XP_iboxpayvideoHEADER.split(COOKIES_SPLIT);
-    } else {
-        middleiboxpayvideoHEADER = process.env.XP_iboxpayvideoHEADER.split();
+        if (
+            process.env.XP_iboxpayvideoHEADER &&
+            process.env.XP_iboxpayvideoHEADER.indexOf(COOKIES_SPLIT) > -1
+        ) {
+            middleiboxpayvideoHEADER = process.env.XP_iboxpayvideoHEADER.split(COOKIES_SPLIT);
+        } else {
+            middleiboxpayvideoHEADER = process.env.XP_iboxpayvideoHEADER.split();
+        }
+        if (
+            process.env.XP_iboxpayvideoBODY &&
+            process.env.XP_iboxpayvideoBODY.indexOf(COOKIES_SPLIT) > -1
+        ) {
+            middleiboxpayvideoBODY = process.env.XP_iboxpayvideoBODY.split(COOKIES_SPLIT);
+        } else {
+            middleiboxpayvideoBODY = process.env.XP_iboxpayvideoBODY.split();
+        }
     }
-    if (
-        process.env.XP_iboxpayvideoBODY &&
-        process.env.XP_iboxpayvideoBODY.indexOf(COOKIES_SPLIT) > -1
-    ) {
-        middleiboxpayvideoBODY = process.env.XP_iboxpayvideoBODY.split(COOKIES_SPLIT);
-    } else {
-        middleiboxpayvideoBODY = process.env.XP_iboxpayvideoBODY.split();
-    }
- }
 }
 if (COOKIE.refreshtokenVal) {
     XP_COOKIES = {
@@ -192,7 +234,7 @@ if (COOKIE.datas && COOKIE.datas[0].val != '') {
 
 }
 
-if (!COOKIE.datas&&!COOKIE.refreshtokenVal) {
+if (!COOKIE.datas && !COOKIE.refreshtokenVal) {
     if ($.isNode()) {
         Object.keys(middlerefreshTOKEN).forEach((item) => {
             if (middlerefreshTOKEN[item]) {
@@ -520,7 +562,7 @@ async function all() {
             iboxpayvideoheaderVal = XP_COOKIES.iboxpayvideoheaderVal[i];
             iboxpayvideobodyVal = XP_COOKIES.iboxpayvideobodyVal[i];
         }
-        if (!COOKIE.datas&&!COOKIE.refreshtokenVal) {
+        if (!COOKIE.datas && !COOKIE.refreshtokenVal) {
 
             refreshtokenVal = refreshtokenArr[i];
             iboxpayvideoheaderVal = iboxpayvideoheaderArr[i];
@@ -572,7 +614,7 @@ async function all() {
             }
         }
 
-        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 20) {
+        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 6) {
             await liveslist(); //直播节目表
             if (liveIdcd >= 1) {
                 dd = liveIdcd * 35 - 34
@@ -849,10 +891,8 @@ function hdid(timeout = 0) {
                     if ($.hdid.resultCode == 1) {
                         spid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 9)
                         zbid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 10)
-                        //console.log(spid.actName + 'ID：' + spid.actId + '\n' +
-                        //zbid.actName + 'ID：' + zbid.actId + '\n');
-                        //$.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n' +
-                        //'【' + zbid.actName + 'ID】：' + zbid.actId + '\n';
+                        console.log(spid.actName + 'ID：' + spid.actId + '\n');
+                        $.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n';
                     }
 
                 } catch (e) {
@@ -912,11 +952,11 @@ function videoo(timeout = 0) {
             videoHEADER1 = videoHEADER[0].replace(`${token}`, `${TOKEN}`)
 
             SPID = videoBODY[0].split(`"actId":"`)[1].split(`"}`)[0]
-            videoBODY1 = videoBODY[0].replace(`${SPID}`, `${spid.actId}`)
+           
             let url = {
                 url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
                 headers: JSON.parse(videoHEADER1),
-                body: videoBODY1,
+                body: videoBODY[0],
             }
             $.post(url, async (err, resp, data) => {
                 try {
@@ -924,15 +964,20 @@ function videoo(timeout = 0) {
                     $.videoo = JSON.parse(data);
                     if ($.videoo.resultCode == 0) {
                         LIVES = 2
+                        if (SPID != spid.actId) {
 
-                        if ($.videoo.errorCode == "GATEWAY-ERROR-002") {
+                            console.log('视频奖励：⚠️视频CK已过期，请重新获取\n');
+                            $.message += '【视频奖励】：⚠️视频CK已过期，请重新获取\n'
+
+                        }else if ($.videoo.errorCode == "GATEWAY-ERROR-002") {
                             console.log('视频奖励：⚠️进入冷却中......\n');
                             $.message += '【视频奖励】：⚠️进入冷却中......\n'
-                        }
-
-                        if ($.videoo.errorCode == "GATEWAY-ERROR-003") {
+                        } else if ($.videoo.errorCode == "GATEWAY-ERROR-003") {
                             console.log('视频奖励：⚠️TOKEN失效\n');
                             $.message += '【视频奖励】：⚠️TOKEN失效\n'
+                        } else {
+                            console.log(`视频奖励：⚠️${$.videoo.errorCode}\n`);
+                            $.message += `【视频奖励】：⚠️${$.videoo.errorCode}\n`
                         }
 
                     }
@@ -967,14 +1012,11 @@ function video(timeout = 0) {
                 setTimeout(() => {
                     token = videoHEADER[i].split(`"token":"`)[1].split(`",`)[0]
                     videoHEADER2 = videoHEADER[i].replace(`${token}`, `${TOKEN}`)
-                    SPID = videoBODY[i].split(`"actId":"`)[1].split(`"}`)[0]
-                    videoBODY2 = videoBODY[i].replace(`${SPID}`, `${spid.actId}`)
-
-
+                    //SPID = videoBODY[i].split(`"actId":"`)[1].split(`"}`)[0]
                     let url = {
                         url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
                         headers: JSON.parse(videoHEADER2),
-                        body: videoBODY2,
+                        body: videoBODY[i],
                     }
                     $.post(url, async (err, resp, data) => {
                         try {
