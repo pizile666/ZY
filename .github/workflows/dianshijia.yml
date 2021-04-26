@@ -13,7 +13,7 @@ jobs:
     env:
         DSJ_HEADERS: ${{ secrets.DSJ_HEADERS }}
         DSJ_DRAWAL: ${{ secrets.DSJ_DRAWAL }}
-
+        DSJ_REWARD: ${{ secrets.DSJ_REWARD }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
