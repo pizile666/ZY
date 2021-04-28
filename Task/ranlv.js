@@ -1,11 +1,11 @@
 /*
-tgchannel：https://t.me/ZhiYi_Script
-github：https://github.com/ZhiYi-N/script
-boxjs：https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/ZhiYi-N.boxjs.json
+tgchannel：https://t.me/Ariszy_Script
+github：https://github.com/Ariszy/script
+boxjs：https://raw.githubusercontent.com/Ariszy/Private-Script/master/Ariszy.boxjs.json
 转载留个名字，谢谢
 邀请码：190512
 谢谢
-作者：执意ZhiYi-N
+作者：执意Ariszy
 #看一个视频获取ck
 目前包含：
 看视频奖励、分享奖励
@@ -15,23 +15,28 @@ boxjs：https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/ZhiYi-N.
 hostname = ranlv.lvfacn.com
 #圈x 
 [rewrite local]
-https://ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js
+https://ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/ranlv.js
+
+
 #loon
-http-request https://ranlv.lvfacn.com/api.php/Common/pvlog script-path=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js, requires-body=true, timeout=10, tag=燃旅视频
+http-request https://ranlv.lvfacn.com/api.php/Common/pvlog script-path=https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/ranlv.js, requires-body=true, timeout=10, tag=燃旅视频
+
+
 #surge
-燃旅视频 = type=http-request,pattern=^https://ranlv.lvfacn.com/api.php/Common/pvlog,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js,script-update-interval=0
+燃旅视频 = type=http-request,pattern=^https://ranlv.lvfacn.com/api.php/Common/pvlog,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Ariszy/Private-Script/master/Scripts/ranlv.js,script-update-interval=0
+
 */
-const zhiyi = '燃旅视频'
-const $ = Env(zhiyi)
+const Ariszy = '燃旅视频'
+const $ = Env(Ariszy)
 const notify = $.isNode() ?require('./sendNotify') : '';
 let status, videoid,myid,supportvideoid,supportrank,show;
 status = (status = ($.getval("rlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 const rlurlArr = [], rlheaderArr = [],rlbodyArr = []
 let rlurl = $.getdata('rlurl')
 let rlheader = $.getdata('rlheader')
-
+let rlbody = $.getdata('rlbody')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
-let cash = ($.getval('rlcash') || '10')//默认不自动提现
+let cash = ($.getval('rlcash') || '0')//默认不自动提现
 const invite=1;//新用户自动邀请，0关闭，1默认开启
 const logs =0;//0为关闭日志，1为开启
 var hour=''
@@ -70,28 +75,27 @@ if ($.isNode()) {
   } else {
    rlheader = process.env.RLHEADER.split()
   };
- Object.keys(rlurl).forEach((item) => {
-        if (rlurl[item]) {
-          rlurlArr.push(rlurl[item])
-        }
-    });
-    Object.keys(rlheader).forEach((item) => {
-        if (rlheader[item]) {
-          rlheaderArr.push(rlheader[item])
-        }
-    });
-
+  if (process.env.RLBODY && process.env.RLBODY.indexOf('#') > -1) {
+   rlbody = process.env.RLBODY.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.RLBODY && process.env.RLBODY.indexOf('\n') > -1) {
+   rlbody = process.env.RLBODY.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   rlbody = process.env.RLBODY.split()
+  };
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
     rlurlArr.push($.getdata('rlurl'))
     rlheaderArr.push($.getdata('rlheader'))
-   
+    rlbodyArr.push($.getdata('rlbody'))
     let rlcount = ($.getval('rlcount') || '1');
   for (let i = 2; i <= rlcount; i++) {
     rlurlArr.push($.getdata(`rlurl${i}`))
     rlheaderArr.push($.getdata(`rlheader${i}`))
-   
+    rlbodyArr.push($.getdata(`rlbody${i}`))
   }
 }
 !(async () => {
@@ -106,7 +110,7 @@ if (!rlheaderArr[0] && !rlbodyArr[0] && !rlurlArr[0]) {
       note =''
       rlurl = rlurlArr[i];
       rlheader = rlheaderArr[i];
-     
+      rlbody = rlbodyArr[i];
       $.index = i + 1;
       console.log(`\n开始【燃旅视频${$.index}】`)
       await checkVersion()
@@ -127,11 +131,11 @@ function GetCookie() {
 if($request&&$request.url.indexOf("Common/pvlog")>=0) {
    const rlurl = $request.url.split('?')[1]
    if(rlurl)     $.setdata(rlurl,`rlurl${status}`)
-   $.log(`[${zhiyi}] 获取rlurl请求: 成功,rlurl: ${rlurl}`)
+   $.log(`[${Ariszy}] 获取rlurl请求: 成功,rlurl: ${rlurl}`)
    $.msg(`rlurl${status}: 成功🎉`, ``)
    const rlheader = JSON.stringify($request.headers)
     if(rlheader)    $.setdata(rlheader,`rlheader${status}`)
-    $.log(`[${zhiyi}] 获取rlheader请求: 成功,rlheader: ${rlheader}`)
+    $.log(`[${Ariszy}] 获取rlheader请求: 成功,rlheader: ${rlheader}`)
     $.msg(`rlheader${status}: 成功🎉`, ``)
 }
 }
@@ -468,7 +472,7 @@ async function wiTask(){
         }
         if(praiseArr.to_num >= praiseArr.num && commentArr.to_num >= commentArr.num && commentArr.to_num >= commentArr.num){
         note += '提现任务已完成'
-        $.log(zhiyi,'',note)
+        $.log(Ariszy,'',note)
         }
         }
         }catch(e) {
@@ -861,7 +865,7 @@ if(tz==1){
    }else{
      $.log(message+note)
     //if ((hour == 12 && minute <= 20) || (hour == 23 && minute >= 40)) {
-       $.msg(zhiyi,'',message+note)
+       $.msg(Ariszy,'',message+note)
 //}
 }
    }else{
