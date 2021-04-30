@@ -6,12 +6,12 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync-GoodHolidays
+    types: sync Sunert-scripts
 jobs:
   repo-sync:
     env:
-      PAT: ${{ secrets.PAT }} #´Ë´¦PATĞèÒªÉêÇë£¬½Ì³ÌÏê¼û£ºhttps://www.jianshu.com/p/bb82b3ad1d11
-      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # ÎÒ×Ô¼ºÍ¬²½µ½giteeÊ¹ÓÃ£¬ÆäËûÈË¿ÉºöÂÔ
+      PAT: ${{ secrets.PAT }} #æ­¤å¤„PATéœ€è¦ç”³è¯·ï¼Œæ•™ç¨‹è¯¦è§ï¼šhttps://www.jianshu.com/p/bb82b3ad1d11
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # æˆ‘è‡ªå·±åŒæ­¥åˆ°giteeä½¿ç”¨ï¼Œå…¶ä»–äººå¯å¿½ç•¥
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync GoodHolidays
+      - name: sync Sunert-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
@@ -28,20 +28,20 @@ jobs:
           destination_branch: "sunert"
           github_token: ${{ secrets.PAT }}
 
-      # ÎÒ×Ô¼ºÍ¬²½µ½giteeÊ¹ÓÃ£¬ÆäËûÈË¿ÉºöÂÔ
+      # æˆ‘è‡ªå·±åŒæ­¥åˆ°giteeä½¿ç”¨ï¼Œå…¶ä»–äººå¯å¿½ç•¥
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key
         with:
-          # ±ØÑ¡£¬ĞèÒªÍ¬²½µÄGithubÓÃ»§£¨Ô´£©
+          # å¿…é€‰ï¼Œéœ€è¦åŒæ­¥çš„Githubç”¨æˆ·ï¼ˆæºï¼‰
           src: github/Sunert
-          # ±ØÑ¡£¬ĞèÒªÍ¬²½µ½µÄGiteeµÄÓÃ»§£¨Ä¿µÄ£©
+          # å¿…é€‰ï¼Œéœ€è¦åŒæ­¥åˆ°çš„Giteeçš„ç”¨æˆ·ï¼ˆç›®çš„ï¼‰
           dst: gitee/Sunert
-          # ±ØÑ¡£¬¸üĞÂÖ¸¶¨¿âÃû×Ö
+          # å¿…é€‰ï¼Œæ›´æ–°æŒ‡å®šåº“åå­—
           static_list: "Scripts"
 
-          # ±ØÑ¡£¬Gitee¹«Ô¿¶ÔÓ¦µÄË½Ô¿£¬https://gitee.com/profile/sshkeys
+          # å¿…é€‰ï¼ŒGiteeå…¬é’¥å¯¹åº”çš„ç§é’¥ï¼Œhttps://gitee.com/profile/sshkeys
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
 
-          # ±ØÑ¡£¬Gitee¶ÔÓ¦µÄÓÃÓÚ´´½¨²Ö¿âµÄtoken£¬https://gitee.com/profile/personal_access_tokens
+          # å¿…é€‰ï¼ŒGiteeå¯¹åº”çš„ç”¨äºåˆ›å»ºä»“åº“çš„tokenï¼Œhttps://gitee.com/profile/personal_access_tokens
           dst_token: ${{ secrets.GITEE_TOKEN }}
