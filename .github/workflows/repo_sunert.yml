@@ -1,4 +1,4 @@
-name: sync-sunert-scripts
+name: sync-sunert1-scripts
 on:
   schedule:
     - cron: '1 */6 * * *'
