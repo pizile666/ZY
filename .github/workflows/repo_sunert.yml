@@ -1,4 +1,4 @@
-name: sync-sunert1-scripts
+name: sync-sunert-scripts
 on:
   schedule:
     - cron: '1 */6 * * *'
@@ -6,7 +6,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync Sunert-scripts
+    types: sync Sunert-scripts1
 jobs:
   repo-sync:
     env:
