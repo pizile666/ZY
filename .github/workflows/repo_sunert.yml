@@ -6,7 +6,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync Sunert-scripts1
+    types: sync Sunert-scripts
 jobs:
   repo-sync:
     env:
@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync Sunert-scripts
+      - name: sync Sunert-scripts1
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
