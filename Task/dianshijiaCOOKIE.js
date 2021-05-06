@@ -1,8 +1,8 @@
 
-//独立COOKIE文件     ck在``里面填写，多账号换行
+//鐙珛COOKIE鏂囦欢     ck鍦╜`閲岄潰濉啓锛屽璐﹀彿鎹㈣
 let DsjurlVal= ``
 
-let DrawalVal= ``
+let DrawalVal= `http://api.gaoqingdianshi.com/api/v2/cash/withdrawal?code=randTx&rs=xPe8mvqJ4a4mSxSyszN&sign=a7c1f4c51a52018b50a248bc95ea6968`
 
 let cookiearr = {
   DsjurlVal: DsjurlVal,
