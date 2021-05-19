@@ -1,4 +1,3 @@
-
 {
   "id": "sunert.app.sub", 
   "author": "@Sunert", 
@@ -351,8 +350,10 @@
     {
       "author": "@sunert", 
       "keys": [
-        "baidu_nick",
-        "bdspeed",
+        "baidu_nick", 
+        "bdspeed", 
+        "chavy_cookie_tieba", 
+        "CookieTB", 
         "cash_baidu"
       ], 
       "repo": "https://github.com/Sunert/Scripts/blob/master/Task/baiduspeed.js", 
