@@ -33,7 +33,7 @@ jobs:
           npm install
       - name: '运行 【燃旅视频】'
         run: |
-          node main/Task/rl.js
+          node Task/ranlv.js
         env:
           
           RLURL: ${{ secrets.RLURL }}
