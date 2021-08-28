@@ -1,0 +1,30 @@
+﻿name: 书旗
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0-23/8 * * *'
+jobs:
+  build:
+    runs-on: macos-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/pizile666/ZY.git ~/ZY
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: npm install
+        run: |
+          cd ~/ZY
+          npm install
+          npm install cron
+          npm install request
+          curl ipinfo.io/json
+      - name: '【书旗小说】'
+        run: |
+          cd ~/ZY/Task   
+          node sq.js
+        env:
+          ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
