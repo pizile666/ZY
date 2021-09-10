@@ -8,48 +8,48 @@ const $ = Env(jobname)
     await all();
 })()
     .catch((e) => {
-        $.log('', `? ${$.name}, 失败! 原因: ${e}!`, '')
+        $.log('', `? ${$.name}, 脢搂掳脺! 脭颅脪貌: ${e}!`, '')
     })
     .finally(() => {
         $.done();
     })
 
 async function all() {
-    //nodejs运行
-    await dailysign();
-    await $.wait(1000);
+    //nodejs脭脣脨脨
+    //await dailysign();
+    //await $.wait(1000);
 
     for (let i = 0; i < 10; i++) {
-        await vedioreward();
-        await $.wait(1000);
-        await vediorewarddraw();
-        await $.wait(1000);
-        await drawreward();
+        //await vedioreward();
+        //await $.wait(1000);
+        //await vediorewarddraw();
+        //await $.wait(1000);
+        //await drawreward();
     }
-    await $.wait(1000);
-    await read();
-    await $.wait(1000);
-    await share();
-    await $.wait(1000);
-    await receive();
-    await $.wait(1000);
-    await jsdailysign();
-    await $.wait(1000);
-    await jsvedioreward20();
-    await $.wait(1000);
-    await jsvedioreward10();
-    await $.wait(1000);
-    await jsshucheng();
-    await $.wait(1000);
-    await jsshare();
-    await $.wait(1000);
-    await jsread()
-    await $.wait(1000);
+    //await $.wait(1000);
+    //await read();
+    //await $.wait(1000);
+    //await share();
+    //await $.wait(1000);
+    //await receive();
+    //await $.wait(1000);
+    //await jsdailysign();
+    //await $.wait(1000);
+    //await jsvedioreward20();
+    //await $.wait(1000);
+    //await jsvedioreward10();
+    //await $.wait(1000);
+    //await jsshucheng();
+    //await $.wait(1000);
+    //await jsshare();
+    //await $.wait(1000);
+    //await jsread()
+    //await $.wait(1000);
     for (let i = 0; i < 10; i++) {
-        await vedioreward426();
-        await $.wait(1000);
+        //await vedioreward426();
+        //await $.wait(1000);
     }
-    await $.wait(1000);
+    //await $.wait(1000);
     await read426();
 
 }
@@ -99,7 +99,7 @@ function read426() {
             "User-Agent": "shuqireader/4.2.6 (iPad; iOS 13.2.2; Scale/2.00)",
             "Accept-Language": "zh-Hans-CN;q=1"
         };
-        const body = "_public=skinId%3D999%26idfa%3D021BC905-6AFA-424D-8B50-99F11074780F%26ustatus%3D1%26first_placeid%3D111111%26net_env%3Dwwan%26umidtoken%3DYRxruFbmacIDADjqvrFJgz0i%26user_id%3D2916901745%26sn%3D2C6C8B4E89B5253B7A6EFE559CF0C08C1229D01C%26placeid%3D111111%26msv%3D8.0.0%26brand%3DApple%26imei%3DBA06F6AB9661003A1DA723B28A1AF20643BB3296%26skinVersionPrefix%3D1%26appVer%3D4.2.6.0%26skinActiveColor%3D0F9970%26manufacturer%3DApple%26session%3DeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyOTE2OTAxNzQ1IiwidXRkaWQiOiIiLCJpbWVpIjoiQkEwNkY2QUI5NjYxMDAzQTFEQTcyM0IyOEExQUYyMDY0M0JCMzI5NiIsInNuIjoiMkM2QzhCNEU4OUI1MjUzQjdBNkVGRTU1OUNGMEMwOEMxMjI5RDAxQyIsImV4cCI6MTYyOTc3MTE1NiwidXNlcklkIjoiMjkxNjkwMTc0NSIsImlhdCI6MTYyOTI1Mjc1Niwib2FpZCI6IiIsInBsYXRmb3JtIjoiaU9TIn0.PPT_1Wimc2dL141NpVNCweAfe-uJOvy18_UxEwg7VAF-amgti--izqVsPN0QJFuvT5YCojiB8Pn8lvupwboHSQ%26skinColor%3D23B383%26platform%3DiOS%26ver%3D201102%26mod%3DiPad4G%26statusBarHeight%3D20.000000%26skinVersion%3D1%26wh%3D750x1334%26soft_id%3D21%26utdid%3DYRxruFbmacIDADjqvrFJgz0i%26utype%3Dvip%26sdk%3D13.2.2&deliveryId=531&key=sq_app_ad&miniWua=HHnB_xPXK19arARvcrQepQw5tGVMuA1Q9DUHiWCJm9nGcwpspzMwcskQhXo2LQ7esM7LHlgp9UFCSNJIaB/azua2UywuDTc9nzfZGax3GHldNa//kamdwqXBX0bf4bK4u6k6c&reqEncryptParam=%3A&reqEncryptType=-1&requestSrc=shuqi&resEncryptType=-1&resourceId=678&sign=0FA00ADC614941171F259622F0234BDB&timestamp=1629252811&userId=2916901745&wua=HIVW_gka845tP4apVJpT8T3jvuTCLAlAdR6ZSX2hU/OKCP9NKuytiA6UpqB/DtGEhj5QuiADEypSd4LPac8cp8V7G/F%2BJsiO3yWaNRrkVDywhs1E3oEwWwzwBhdem93cpQj4Tzeh4lDq75qyHoVNw7dKHnAWzRKIjnCAs30ojR0TgFdm89VgM0xjNtFHvdF5yqcEwJkhnYi7D3xNjL5kJ/mF4I8SBoiTEhb0hYK1lh56K1D7b1N0sEXOkozMvbfVfo9X3oRIPhcPo3DKKHsSmNr4iPsk9y4zVLa2yFoswD4Re9t%2Bneo77L%2BBW%2Bxaw1tnmLzm3jec4z%2BIlNrXyAFg0Bh1wuA7xHu0AbTVnrut88Zb28gO2puegDsurUx4y4KlYIcxw";
+        const body = "_public=skinId%3D999%26idfa%3D871138B6-BB9C-4BE3-BA29-6A9E5B870542%26ustatus%3D1%26first_placeid%3D111111%26net_env%3Dwifi%26umidtoken%3DrANLSTpLOk3qoTV7yKfUyvPIVhTAil66%26user_id%3D314143411%26sn%3DDC73887642034852BC4FF2B7E36BB8A0707311A4%26placeid%3D111111%26msv%3D8.0.0%26brand%3DApple%26imei%3D047B729BA7E372317954A1AA97D7257939A857C3%26skinVersionPrefix%3D1%26appVer%3D4.2.6.0%26skinActiveColor%3D0F9970%26manufacturer%3DApple%26session%3DeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMTQxNDM0MTEiLCJ1dGRpZCI6IiIsImltZWkiOiIwNDdCNzI5QkE3RTM3MjMxNzk1NEExQUE5N0Q3MjU3OTM5QTg1N0MzIiwic24iOiJEQzczODg3NjQyMDM0ODUyQkM0RkYyQjdFMzZCQjhBMDcwNzMxMUE0IiwiZXhwIjoxNjMxNjcyMDg3LCJ1c2VySWQiOiIzMTQxNDM0MTEiLCJpYXQiOjE2MzExNTM2ODcsIm9haWQiOiIiLCJwbGF0Zm9ybSI6ImlPUyJ9.l890GS-bHZoxpqZlpDNBHUzHGgq5luH0RnW8egrIzLn3bQ7CumBbS39xi-lKBiU5Gl0-NAgaBFBpKaoUptGZHA%26skinColor%3D23B383%26platform%3DiOS%26ver%3D201102%26mod%3DiPhoneXR%26statusBarHeight%3D44.000000%26skinVersion%3D1%26wh%3D828x1792%26soft_id%3D21%26utdid%3DYDY88Onh8DADALt%2BDDpBJrv9%26utype%3Dvip%26sdk%3D13.4.1&deliveryId=531&key=sq_app_ad&miniWua=HHnB_IdaVuWW2RLfmdko6L3zHgu6j9yeF6s8nwEpmyhBEq%2BZ95z69l4UK8GM7EwrN8hrjST2XRu8P8Cen%2BIblbtgIQCJjlxVQBrpM3Cx9n8j3yTfOTmBNGSGw5lmQ6K4JcgIIPtdWrjnR92MgyS6f1BgwQg%3D%3D&reqEncryptParam=%3A&reqEncryptType=-1&requestSrc=shuqi&resEncryptType=-1&resourceId=678&sign=1D6B5677B5143E276DE3BB9F029E447F&timestamp=1631154706&userId=314143411&wua=HIVW_0uw1PmnvLN%2BMwO5E%2BeYJdrH9ZsDdvltHP4PlgqjcuAmwgUAUomwhG6ubhppkNrwIpXoYFVUkIhxDxAZV2tUP5fkJbow5VAXWMSaCqiuWOK%2BjfCq3calhoX3JyUMjHvTIk7moyH57BAsF4w0QsodEMSd4GNeal0lCazAgTjTm5kI1k0R1XFrfGiQPrhcEaukQeFSG6shsLaK3nju55nbLtqveP/G91PgV3m1ORpso%2BLDHrWk2MoQTwSvHjt0Yxno8V4hBZO/OSZj7v3M6U6flGdVJgY9zkI3A7dUAKzcoKdZVp0pIRXeVFW5KNuvey4DM9JcNMvl0QS4TluCzYC4MpFUmv4H5AapKlYBdddbf4jmTHxquQp7CCSd4/lWCdZL93dkBBVsvqA%2BHPli3pm9XNQ%3D%3D";
         const request = {
             url: url,
             headers: headers,
