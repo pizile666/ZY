@@ -91,7 +91,7 @@ function read426() {
         const url = "https://ocean.shuqireader.com/api/ad/v1/api/prize/readpage/pendant/lottery";
         const headers = {
             "Accept-Encoding": "gzip, deflate, br",
-            "Cookie": "isg=BJWVwCP9WMjvbHw07CngquuyrpVPkkmkfsWvxRc6UIxbbrdg3-LsdoA8PvRY9WFc; cna=wVmjGXEJsiUCAXAfvZEK/5zJ",
+            "Cookie": "isg=BOXl0Oyf6N9VNQ1i3Dpf15g8_qUfIpm0OwMRcufKs5wl_gxwr3JnhvmMjuSIZbFs; cna=QHnhGHBdDVUCAXVGtm22wW4C",
             "Connection": "keep-alive",
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
