@@ -15,7 +15,7 @@ const $ = Env(jobname)
     })
 
 async function all() {
-    //nodejsÔËÐÐ
+    //nodejs运行
     //await dailysign();
     //await $.wait(1000);
 
