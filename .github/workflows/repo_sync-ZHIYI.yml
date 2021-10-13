@@ -1,5 +1,5 @@
 ﻿# File: .github/workflows/repo-sync.yml
-name: sync-ZHIYI-scripts
+name: sync-zhiyi-scripts
 on:
   schedule:
     - cron: '1 */6 * * *'
