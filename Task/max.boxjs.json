@@ -1,44 +1,24 @@
 {
             "id": "dsj",
-            "name": "µçÊÓ¼ÒÌáÏÖ",
-            "keys": ["dsj_user_id","dsj_user_id2","dsj_user_id3","dsj_user_id4","dsj_user_id5"],
+            "name": "ç”µè§†å®¶æç°",
+            "keys": ["dsj_user_id","dsj_token","dsjtx_urls","dsj_user_id2","dsj_token2","dsjtx_urls2","dsj_user_id3","dsj_token3","dsjtx_urls3","dsj_user_id4","dsj_token4","dsjtx_urls4","dsj_user_id5""dsj_token5","dsjtx_urls5"],
             "author": "@max",
             "settings": [{
                     "id": "dsjSuffix",
-                    "name": "µ±Ç°ÕËºÅ",
+                    "name": "å½“å‰è´¦å·",
                     "val": "1",
                     "type": "number",
-                    "desc": "µ±Ç°×¥È¡ck¼ÇÂ¼µÄÕËºÅĞòºÅ£¬Èç£º1¡¢2¡¢3¡¢"
+                    "desc": "å½“å‰æŠ“å–ckè®°å½•çš„è´¦å·åºå·ï¼Œå¦‚ï¼š1ã€2ã€3ã€"
                 },
                 {
                     "id": "dsjCount",
-                    "name": "ÕËºÅ¸öÊı",
+                    "name": "è´¦å·ä¸ªæ•°",
                     "val": "1",
                     "type": "number",
-                    "desc": "Ö¸¶¨ÈÎÎñ×î¶àÅÜ¼¸¸öÕËºÅ£¬¸ù¾İ×¥È¡µÄÕËºÅÊı¾İ¸öÊıÀ´ÉèÖµ"
+                    "desc": "æŒ‡å®šä»»åŠ¡æœ€å¤šè·‘å‡ ä¸ªè´¦å·ï¼Œæ ¹æ®æŠ“å–çš„è´¦å·æ•°æ®ä¸ªæ•°æ¥è®¾å€¼"
                 },      
               
-                {
-                    "id": "dsjnotifyttt",
-                    "name": "ÍÆËÍ¿ØÖÆ",
-                    "val": "1",
-                    "type": "number",
-                    "desc": "0¹Ø±Õ£¬1ÍÆËÍ,Ä¬ÈÏ12µãÒÔ¼°23µãÍÆËÍ"
-                },
-                {
-                    "id": "dsjnotifyInterval",
-                    "name": "Í¨Öª¿ØÖÆ",
-                    "val": "2",
-                    "type": "number",
-                    "desc": "0¹Ø±Õ£¬1Îª ËùÓĞÍ¨Öª£¬2Îª 12£¬23 µãÍ¨Öª£¬3Îª 6£¬12£¬18£¬23 µãÍ¨Öª "
-                },
-                {
-                    "id": "dsjMinutes",
-                    "name": "ÍÆËÍ-Í¨Öª ·ÖÖÓ¿ØÖÆ",
-                    "val": "10",
-                    "type": "number",
-                    "desc": "ÍÆËÍÒÔ¼°Í¨Öª¿ØÖÆÔÚÊ²Ã´·ÖÖÓ¶Î£¬¿ÉÉèÖÃ0-59,Ä¬ÈÏ0µ½10"
-                }],
+       
             "repo": "https://raw.githubusercontent.com/pizile666/ZY/master/Task/dsjtx.js",
             "icons": ["https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/dsj.png", "https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/dsj.png"],
             "script": "https://raw.githubusercontent.com/pizile666/ZY/master/Task/dsjtx.js"
