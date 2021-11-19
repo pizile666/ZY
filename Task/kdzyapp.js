@@ -1,19 +1,19 @@
 /*
-½Å±¾¼æÈİ: QuantumultX, Surge, Loon, JSBox, Node.js
-×¢²áµØÖ·£ºhttp://kdzhy.mlyougame.com:82/web/page/qr.html?c=110234
-²»º¬ÑûÇëÁ´½Ó
-ĞèÒªÊµÃûÈÏÖ¤ºó°ó¶¨Ö§¸¶±¦
-kdzyPhone:ÊÖ»úºÅ#ÃÜÂë
-export kdzyPhone='ÊÖ»úºÅ#ÃÜÂë'
-boxjsµØÖ·:https://raw.fastgit.org/byxiaopeng/myscripts/main/byxiaopeng.boxjs.json
+è„šæœ¬å…¼å®¹: QuantumultX, Surge, Loon, JSBox, Node.js
+æ³¨å†Œåœ°å€ï¼šhttp://kdzhy.mlyougame.com:82/web/page/qr.html?c=110234
+ä¸å«é‚€è¯·é“¾æ¥
+éœ€è¦å®åè®¤è¯åç»‘å®šæ”¯ä»˜å®
+kdzyPhone:æ‰‹æœºå·#å¯†ç 
+export kdzyPhone='æ‰‹æœºå·#å¯†ç '
+boxjsåœ°å€:https://raw.fastgit.org/byxiaopeng/myscripts/main/byxiaopeng.boxjs.json
 */
 // [task_local]
-//#¿Ú´ü×¯Ô°
-// 9 11 * * * https://raw.fastgit.org/byxiaopeng/myscripts/main/kdzyapp.js, tag=¿Ú´ü×¯Ô°, enabled=true
-const $ = new Env('¿Ú´ü×¯Ô°APPÇ©µ½');
+//#å£è¢‹åº„å›­
+// 9 11 * * * https://raw.fastgit.org/byxiaopeng/myscripts/main/kdzyapp.js, tag=å£è¢‹åº„å›­, enabled=true
+const $ = new Env('å£è¢‹åº„å›­APPç­¾åˆ°');
 const notify = $.isNode() ? require('./sendNotify') : '';
 let status;
-status = (status = ($.getval("kdzystatus") || "1")) > 1 ? `${status}` : ""; // ÕËºÅÀ©Õ¹×Ö·û
+status = (status = ($.getval("kdzystatus") || "1")) > 1 ? `${status}` : ""; // è´¦å·æ‰©å±•å­—ç¬¦
 let kdzyPhoneArr = [];
 let kdzyPhone = $.isNode() ? (process.env.kdzyPhone ? process.env.kdzyPhone : "") : ($.getdata('kdzyPhone') ? $.getdata('kdzyPhone') : "");
 let kdzyPhones = "";
@@ -22,7 +22,7 @@ let tz = ($.getval('tz') || '1');
 let host=`http://kdzhy.mlyougame.com:82`;
 $.message = ''
 
-//¿ªÊ¼ÔËĞĞ
+//å¼€å§‹è¿è¡Œ
 !(async () => {
   if (typeof $request !== "undefined") {
     // kdzyck()
@@ -33,12 +33,12 @@ $.message = ''
       for (let i = 2; i <= kdzycount; i++) {
         kdzyPhoneArr.push($.getdata(`kdzyPhone${i}`))
       }
-      console.log(`-------------¹²${kdzyPhoneArr.length}¸öÕËºÅ-------------\n`)
+      console.log(`-------------å…±${kdzyPhoneArr.length}ä¸ªè´¦å·-------------\n`)
       for (let i = 0; i < kdzyPhoneArr.length; i++) {
         if (kdzyPhoneArr[i]) {
           kdzyPhone = kdzyPhoneArr[i];
           $.index = i + 1;
-          console.log(`\n¿ªÊ¼¡¾¿Ú´ü×¯Ô°ÕË»§ ${$.index}¡¿`)
+          console.log(`\nå¼€å§‹ã€å£è¢‹åº„å›­è´¦æˆ· ${$.index}ã€‘`)
           zhanghu = kdzyPhone.split('#')
           user = zhanghu[0]
           mima = zhanghu[1]
@@ -48,7 +48,7 @@ $.message = ''
     } else {
       if (process.env.kdzyPhone && process.env.kdzyPhone.indexOf('@') > -1) {
         kdzyPhoneArr = process.env.kdzyPhone.split('@');
-        console.log(`ÄúÑ¡ÔñµÄÊÇÓÃ"@"¸ô¿ª\n`)
+        console.log(`æ‚¨é€‰æ‹©çš„æ˜¯ç”¨"@"éš”å¼€\n`)
       } else {
         kdzyPhones = [process.env.kdzyPhone]
       };
@@ -57,12 +57,12 @@ $.message = ''
           kdzyPhoneArr.push(kdzyPhones[item])
         }
       })
-      console.log(`¹²${kdzyPhoneArr.length}¸öÕËºÅ`)
+      console.log(`å…±${kdzyPhoneArr.length}ä¸ªè´¦å·`)
       for (let k = 0; k < kdzyPhoneArr.length; k++) {
         $.message = ""
         kdzyPhone = kdzyPhoneArr[k]
         $.index = k + 1;
-        console.log(`\n¿ªÊ¼¡¾¿Ú´ü×¯Ô°ÕË»§ ${$.index}¡¿`)
+        console.log(`\nå¼€å§‹ã€å£è¢‹åº„å›­è´¦æˆ· ${$.index}ã€‘`)
         zhanghu = kdzyPhone.split('#')
         user = zhanghu[0]
         mima = zhanghu[1]
@@ -74,17 +74,17 @@ $.message = ''
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-//ÒªÖ´ĞĞµÄ´úÂë
+//è¦æ‰§è¡Œçš„ä»£ç 
 async function byxiaopeng() {
   await dutang() 
   await $.wait(2000)
   await login()
   await $.wait(2000)
   await getBonusMoney()
-  message() //Í¨Öª
+  message() //é€šçŸ¥
 }
 
-//Ã¿ÈÕ¶¾¼¦ÌÀ
+//æ¯æ—¥æ¯’é¸¡æ±¤
 function dutang(timeout = 0) {
   return new Promise((resolve) => {
       let url = {
@@ -98,8 +98,8 @@ function dutang(timeout = 0) {
           try {
               result = data
               if (result.length != 0) {
-                  $.log(`\n¡¾½ñÈÕ¼¦ÌÀ¡¿£º${result}`)
-                  $.message += `\n¡¾½ñÈÕ¼¦ÌÀ¡¿£º${result}`
+                  $.log(`\nã€ä»Šæ—¥é¸¡æ±¤ã€‘ï¼š${result}`)
+                  $.message += `\nã€ä»Šæ—¥é¸¡æ±¤ã€‘ï¼š${result}`
               }
           } catch (e) {
               $.logErr(e, resp);
@@ -110,7 +110,7 @@ function dutang(timeout = 0) {
   })
 }
 
-//µÇÂ¼
+//ç™»å½•
 function login(timeout = 0) {
   return new Promise((resolve) => {
     let url = {
@@ -127,23 +127,23 @@ function login(timeout = 0) {
         if (result.code == 1) {
           token = result.data.token
           tc = result.data.id
-          $.log(`\nµÇÂ½³É¹¦`)
-          $.message += `\n¡¾»¶Ó­µõÃ«ÓÃ»§¡¿£º${result.data.nickname}`
-          $.message += `\n¡¾ÄãµÄÑûÇëÂë¡¿£º${result.data['invite_code']}`
-          $.message += `\n¡¾ÓÎÏ·Óà¶î¡¿£º${result.data['game_money']}`
-          $.message += `\n¡¾ÕË»§Ë®¾§¡¿£º${result.data.crystal}`
+          $.log(`\nç™»é™†æˆåŠŸ`)
+          $.message += `\nã€æ¬¢è¿åŠæ¯›ç”¨æˆ·ã€‘ï¼š${result.data.nickname}`
+          $.message += `\nã€ä½ çš„é‚€è¯·ç ã€‘ï¼š${result.data['invite_code']}`
+          $.message += `\nã€æ¸¸æˆä½™é¢ã€‘ï¼š${result.data['game_money']}`
+          $.message += `\nã€è´¦æˆ·æ°´æ™¶ã€‘ï¼š${result.data.crystal}`
           if (result.data['sign_days'] != 7) {
             await $.wait(3000)
-            await sign()//Ç©µ½
+            await sign()//ç­¾åˆ°
           }
           if (result.data.money >= 1) {
-            $.log(`\n¡¾ÌáÏÖÅĞ¶Ï¡¿£ºÕË»§Óà¶î´óÓÚ1ÔªÖ´ĞĞÌáÏÖ`)
-            $.message += `\n¡¾ÌáÏÖÅĞ¶Ï¡¿£ºÕË»§Óà¶î´óÓÚ1ÔªÖ´ĞĞÌáÏÖ`
+            $.log(`\nã€æç°åˆ¤æ–­ã€‘ï¼šè´¦æˆ·ä½™é¢å¤§äº1å…ƒæ‰§è¡Œæç°`)
+            $.message += `\nã€æç°åˆ¤æ–­ã€‘ï¼šè´¦æˆ·ä½™é¢å¤§äº1å…ƒæ‰§è¡Œæç°`
             await withdrawal()
           }
         } else {
-          $.log(`\nÇëÌîĞ´ÕıÈ·µÄÊÖ»úºÅºÍÃÜÂë`)
-          $.message += `\nÇëÌîĞ´ÕıÈ·µÄÊÖ»úºÅºÍÃÜÂë`
+          $.log(`\nè¯·å¡«å†™æ­£ç¡®çš„æ‰‹æœºå·å’Œå¯†ç `)
+          $.message += `\nè¯·å¡«å†™æ­£ç¡®çš„æ‰‹æœºå·å’Œå¯†ç `
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -155,7 +155,7 @@ function login(timeout = 0) {
 }
 
 
-//Ç©µ½
+//ç­¾åˆ°
 function sign(timeout = 0) {
   return new Promise((resolve) => {
     let url = {
@@ -172,11 +172,11 @@ function sign(timeout = 0) {
       try {
         result = JSON.parse(data)
         if (result.code == 1) {
-          $.log(`\n¡¾Ç©µ½×´Ì¬¡¿£º${result.msg}`)
-          $.message += `\n¡¾Ç©µ½×´Ì¬¡¿£º${result.msg}`
+          $.log(`\nã€ç­¾åˆ°çŠ¶æ€ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€ç­¾åˆ°çŠ¶æ€ã€‘ï¼š${result.msg}`
         } else {
-          $.log(`\n¡¾Ç©µ½×´Ì¬¡¿£º${result.msg}`)
-          $.message += `\n¡¾Ç©µ½×´Ì¬¡¿£º${result.msg}`
+          $.log(`\nã€ç­¾åˆ°çŠ¶æ€ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€ç­¾åˆ°çŠ¶æ€ã€‘ï¼š${result.msg}`
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -187,7 +187,7 @@ function sign(timeout = 0) {
   })
 }
 
-//·Öºì
+//åˆ†çº¢
 function getBonusMoney(timeout = 0) {
   return new Promise((resolve) => {
     let url = {
@@ -203,11 +203,11 @@ function getBonusMoney(timeout = 0) {
       try {
         result = JSON.parse(data)
         if (result.code == 1) {
-          $.log(`\n¡¾Ã¿ÈÕ·Öºì¡¿£º${result.msg}`)
-          $.message += `\n¡¾Ã¿ÈÕ·Öºì¡¿£º${result.msg}`
+          $.log(`\nã€æ¯æ—¥åˆ†çº¢ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€æ¯æ—¥åˆ†çº¢ã€‘ï¼š${result.msg}`
         } else {
-          $.log(`\n¡¾Ã¿ÈÕ·Öºì¡¿£º${result.msg}`)
-          $.message += `\n¡¾Ã¿ÈÕ·Öºì¡¿£º${result.msg}`
+          $.log(`\nã€æ¯æ—¥åˆ†çº¢ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€æ¯æ—¥åˆ†çº¢ã€‘ï¼š${result.msg}`
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -219,7 +219,7 @@ function getBonusMoney(timeout = 0) {
 }
 
 
-//ÌáÏÖ
+//æç°
 function withdrawal(timeout = 0) {
   return new Promise((resolve) => {
     let url = {
@@ -236,11 +236,11 @@ function withdrawal(timeout = 0) {
       try {
         result = JSON.parse(data)
         if (result.code == 1) {
-          $.log(`\n¡¾ÌáÏÖĞÅÏ¢¡¿£º${result.msg}`)
-          $.message += `\n¡¾ÌáÏÖĞÅÏ¢¡¿£º${result.msg}`
+          $.log(`\nã€æç°ä¿¡æ¯ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€æç°ä¿¡æ¯ã€‘ï¼š${result.msg}`
         } else {
-          $.log(`\n¡¾ÌáÏÖĞÅÏ¢¡¿£º${result.msg}`)
-          $.message += `\n¡¾ÌáÏÖĞÅÏ¢¡¿£º${result.msg}`
+          $.log(`\nã€æç°ä¿¡æ¯ã€‘ï¼š${result.msg}`)
+          $.message += `\nã€æç°ä¿¡æ¯ã€‘ï¼š${result.msg}`
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -258,7 +258,7 @@ function RT(X, Y) {
   return rt;
 }
 
-//Í¨Öª
+//é€šçŸ¥
 async function message() {
   if (tz == 1) {
       $.msg($.name, "", $.message)
