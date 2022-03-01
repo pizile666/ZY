@@ -1,4 +1,4 @@
-﻿name: 步步宝
+﻿name: 饿了么
 on:
   workflow_dispatch:
   schedule:
@@ -22,10 +22,10 @@ jobs:
           npm install cron
           npm install request
           curl ipinfo.io/json
-      - name: '【步步宝】'
+      - name: '【饿了么】'
         run: |
           cd ~/ZY
-          node Task/bububao.js
+          node Task/elm.js
 env:
           BBB_CASH: ${{ secrets.BBB_CASH }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
