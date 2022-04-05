@@ -1,18 +1,18 @@
 
 {
-  "name": "中青看点定时任务订阅",
+  "name": "自用签到订阅",
   "desc": "无",
   "date": "2021-08-05 20:32:08",
   "author": "https://t.me/ShaolinTemple1",
   "resource": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_cron.json",
   "list": [
     {
-      "name": "中青签到",
+      "name": "124签到",
       "type": "cron",
       "time": "15 2 * * *",
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqqd.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124.js"
       }
     },
     {
