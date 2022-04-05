@@ -9,142 +9,71 @@
     {
       "name": "124签到",
       "type": "cron",
-      "time": "15 2 * * *",
+      "time": "15 0 * * *",
       "job": {
         "type": "runjs",
-        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124qd.js"
       }
     },
     {
-      "name": "中青文章",
+      "name": "124极速签到",
       "type": "cron",
-      "time": "30 7,12,18 * * *",
+      "time": "30 0 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqwz.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124jsqd.js"
       }
     },
     {
-     "name": "中青看看赚",
+     "name": "124sp1",
       "type": "cron",
-      "time": "45 9 * * *",
+      "time": "1-11 25 9 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqkkz.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124sp1.js"
       }
     },
     {
-      "name": "中青火爆转发",
+      "name": "124sp2",
       "type": "cron",
-      "time": "15 6,12,18 * * *",
+      "time": "1-11 35 9 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_share.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124sp2.js"
       }
     },
     {
-      "name": "中青福利视频",
+      "name": "124sp3",
       "type": "cron",
-      "time": "20 21 * * *",
+      "time": "1-11 45 9 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_Adv_video.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124sp3.js"
       }
     },
     {
-      "name": "中青每日任务宝箱领取",
+      "name": "124ad",
       "type": "cron",
-      "time": "15 22 * * *",
+      "time": "1-11 15 10 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqbox.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124ad.js"
       }
     },
     {
-      "name": "中青每日收益统计",
+      "name": "124cj",
       "type": "cron",
-      "time": "15 23 * * *",
+      "time": "1-11 25 10 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_today_score.js"
-      }
-    },
-    {
-      "name": "中青好友签到红包",
-      "type": "cron",
-      "time": "15 7 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_friendSign.js"
-      }
-    },
-    {
-      "name": "中青抽奖",
-      "type": "cron",
-      "time": "34 22 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_Rotary.js"
-      }
-    },
-    {
-      "name": "中青打卡赚",
-      "type": "cron",
-      "time": "34 5,9 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_wakeup.js"
-      }
-    },
-    {
-      "name": "中青搜索赚",
-      "type": "cron",
-      "time": "35 5 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqssz.js"
-      }
-    },
-    {
-      "name": "中青浏览赚",
-      "type": "cron",
-      "time": "34 6 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zqllz.js"
-      }
-    },
-    {
-      "name": "中青阅读翻倍",
-      "type": "cron",
-      "time": "34 5 * * 1",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_double.js"
-      }
-    },
-    {
-      "name": "中青自动提现",
-      "type": "cron",
-      "time": "25 10 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_withdraw.js"
+        "target": "https://github.com/pizile666/ZY/blob/master/qdzy/124cj.js"
       }
     }
-
   ]
 }
